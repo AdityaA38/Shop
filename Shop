@@ -1,0 +1,289 @@
+import com.sun.xml.internal.xsom.impl.parser.SubstGroupBaseTypeRef;
+
+import java.util.HashMap;
+
+import java.util.Scanner;
+
+public class Shop {
+
+    static Scanner scanner = new Scanner(System.in);
+    static HashMap<String, String> itemsLocationMap = new HashMap<String, String>();
+    static HashMap<String, Float> priceMap = new HashMap<>();
+  static HashMap<String, String> stockOfItemMap = new HashMap<>();
+
+
+    public static void main(String[] args) {
+
+        loadItemLocation();
+        loadItemPriceMap();
+        stockOfItemMap();
+
+        int userSelection = -1;
+
+        while (userSelection != 4) {
+            userSelection = displayOptions();
+            scanner = new Scanner(System.in);
+            switch (userSelection) {
+
+                case 0:
+                    displayShopDetails();
+                    break;
+                case 1:
+
+                    System.out.println("Enter item name:");
+                    String itemName = scanner.nextLine();
+                    itemLocation(itemName);
+                    break;
+                case 2:
+                    System.out.println("Enter item name:");
+                    itemName = scanner.nextLine();
+                    itemPrice(itemName);
+                    break;
+                case 3:
+                    System.out.println("Enter item name:");
+                    itemName = scanner.nextLine();
+                    stockOfItem(itemName);
+                    break;
+                case 4:
+                    System.out.println("Enter item name:");
+                    itemName = scanner.nextLine();
+                    System.out.println("Enter quantity of your item:");
+                    String itemQuantityStr = scanner.nextLine();
+                    int itemQuantity = Integer.parseInt(itemQuantityStr);
+                    cashRegister(itemName,itemQuantity);
+
+                case 5:
+                    System.out.println("Ending the system");
+                    break;
+
+
+                default:
+                    throw new IllegalStateException("Unexpected value: " + userSelection);
+            }
+        }
+
+    }
+
+    private static void itemLocation() {
+    }
+
+    private static HashMap<String, Float> loadItemPriceMap() {
+        priceMap.put("1/2 gallon A2 milk", 3.29f);
+
+        priceMap.put("masala", 4.43f);
+        priceMap.put("laddus", 9.99f);
+        priceMap.put("bell Pepper", 6.2f);
+        priceMap.put("potato", 1.43f);
+        priceMap.put("tomato", 2.43f);
+        priceMap.put("biscuit sweet", 3.43f);
+
+        priceMap.put("chocolate", 4.43f);
+
+        priceMap.put("cookies", 5.43f);
+        priceMap.put("kaju kathli", 6.43f);
+        priceMap.put("muffings", 7.43f);
+        priceMap.put("bread/bagel", 8.43f);
+        priceMap.put("cakes", 16.43f);
+        priceMap.put("salt", 3.74f);
+
+        priceMap.put("dragon Fruit", 9.43f);
+
+        priceMap.put("chili powder", 10.43f);
+
+        priceMap.put("claritin", 11.43f);
+
+        priceMap.put("palak paneer", 13.42f);
+
+        priceMap.put("turmeric powder", 21.69f);
+
+        priceMap.put("cheese", 8.86f);
+
+        priceMap.put("malia paneer", 20.43f);
+        priceMap.put("biscuit", 5.23f);
+        priceMap.put("lays chips", 5.13f);
+        priceMap.put("Almonds", 13.1f);
+        priceMap.put("cashews",11.464f);
+        priceMap.put("sleep pills", 20.43f);
+        priceMap.put("butter", 10.54f);
+        priceMap.put("mango", 19.4f);
+        priceMap.put("make your own puries", 12.11f);
+
+
+        return priceMap;
+
+    }
+
+
+
+    private static HashMap<String, String> loadItemLocation() {
+
+        itemsLocationMap.put("1/2 gallon A2 milk","isle 10");
+        itemsLocationMap.put("masala", "isle 1");
+        itemsLocationMap.put("laddus", "isle 2");
+        itemsLocationMap.put("bell Pepper", "isle 3");
+        itemsLocationMap.put("potato", "isle 3");
+        itemsLocationMap.put("tomato", "isle 3");
+        itemsLocationMap.put("biscuit ", "isle 4 ");
+        itemsLocationMap.put("chocolate", "isle 5");
+        itemsLocationMap.put("cookies", "isle 5");
+        itemsLocationMap.put("kaju kathli", "isle 2");
+        itemsLocationMap.put("muffins", "isle 5");
+        itemsLocationMap.put("bread/bagel", "isle 6");
+        itemsLocationMap.put("cakes", "isle 6");
+        itemsLocationMap.put("salt", "isle 7");
+        itemsLocationMap.put("dragon Fruit", "isle 8");
+        itemsLocationMap.put("chili powder", "isle 3");
+        itemsLocationMap.put("claritin", "isle 9");
+        itemsLocationMap.put("palak paneer", "isle 10");
+        itemsLocationMap.put("turmeric powder", "isle 9");
+        itemsLocationMap.put("cheese", "isle 10");
+        itemsLocationMap.put("malia paneer", "isle 10");
+        itemsLocationMap.put("walnuts", "isle 11");
+        itemsLocationMap.put("lays chips", "isle 12");
+        itemsLocationMap.put("Almonds", "isle 11");
+        itemsLocationMap.put("cashews", "isle 11");
+        itemsLocationMap.put("sleep pills", "isle 9");
+        itemsLocationMap.put("butter", "isle 10");
+        itemsLocationMap.put("mango", "isle 8");
+        itemsLocationMap.put("make your own puries", "isle 1");
+
+
+
+
+        return itemsLocationMap;
+    }
+
+    private static HashMap<String, String> stockOfItemMap() {
+        stockOfItemMap.put("1/2 gallon A2 milk","162 cartons");
+        stockOfItemMap.put("masala", "233 packets");
+        stockOfItemMap.put("laddus", "490 boxes");
+        stockOfItemMap.put("bell Pepper", "128 bell Peppers");
+        stockOfItemMap.put("potato", "614 potatoes");
+        stockOfItemMap.put("tomato", "419 tomatoes");
+        stockOfItemMap.put("biscuit ", "862 packs(pack of 8 )");
+        stockOfItemMap.put("chocolate", "1009 bars");
+        stockOfItemMap.put("cookies", "306 boxes(6 per box)");
+        stockOfItemMap.put("kaju kathli", "179 boxes(12 in each)");
+        stockOfItemMap.put("muffins", "532 boxes(3 in each)");
+        stockOfItemMap.put("bread/bagel", "421 baskets(10 in each)");
+        stockOfItemMap.put("cakes", "365 cakes");
+        stockOfItemMap.put("salt", "1284 packs(100 grams in each)");
+        stockOfItemMap.put("dragon Fruit", "86 dragon fruits( warning: RUNNING LOW BECAUSE OF HOW RARE IT IS. DONATIONS ARE appreciated for dragon fruits. Thank you)" );
+        stockOfItemMap.put("chili powder", "715 packets(1/5 pound  each");
+        stockOfItemMap.put("claritin", "327 bottles");
+        stockOfItemMap.put("palak paneer", "234 plates");
+        stockOfItemMap.put("cheese", " 567 blocks");
+        stockOfItemMap.put("malia paneer", "352 plates");
+        stockOfItemMap.put("walnuts", "342 pounds");
+        stockOfItemMap.put("lays chips", "200 large packets & 300 small packets");
+        stockOfItemMap.put("Almonds", "684 pounds");
+        stockOfItemMap.put("cashews", "460 pounds");
+        stockOfItemMap.put("sleep pills", "321 boxes(5 in each)");
+        stockOfItemMap.put("butter", "395 packs(3 blocks per pack)");
+        stockOfItemMap.put("mango", "222 mangoes");
+        stockOfItemMap.put("make your own puries", "307 packs(10 frozen puries in each)");
+
+
+
+
+        return stockOfItemMap;
+    }
+
+
+    static int displayOptions() {
+        String[] displayOptions = {
+                "1. Shop Details",
+                "2. Item location",
+                "3. Item price",
+                "4. Stock of item ",
+                "5. Cash Register",
+                "6. Exit Program"
+        };
+
+        System.out.println(" Aditya's natural edible products");
+        for(int i = 0; i < displayOptions.length; i++) {
+            System.out.println(displayOptions[i]);
+        }
+
+        System.out.println("Enter your option:");
+        int option = scanner.nextInt();
+        option --;
+        if(option >= 0 && option <=4) {
+            System.out.println("User Selected Option :" + displayOptions[option]);
+        } else {
+            System.out.println("Enter one of the available actions. 1 to 5");
+            displayOptions();
+        }
+
+        return option;
+
+    }
+
+
+
+    private static void displayShopDetails() {
+        System.out.println("You are now in the shop. IN this shop, there will be many varieties of item. Enjoy!");
+
+        //System.out.println
+
+    }
+
+
+    private static void itemLocation(String itemName) {
+       /* System.out.println("User Selected item location for :" + itemName);
+       System.out.println(" izle one: Fruits and Vegetables , izle 2: Sweets , izle 3: indian mix restaurant , izle 4: grains, izle 5: nuts, izle 6: " +
+                "junk food, izle 7:spices, izle 8:cultural food, izle 9:bakery, izle 10: Dairy products, izle 11: medicine");
+        System.out.println( "percentages: izle one: Fruits and Vegetables 35% , izle 2: Sweets 10% , izle 3: indian mix restaurant 5%, izle 4: grains 15% , " +
+                "izle 5: nuts 5%, izle 6:  junk food 10%, izle 7:spices 3%, izle 8:cultural food 2% , izle 9:bakery 5%," +
+                " izle 10: Dairy products 5%");
+*/
+
+        boolean containsItem = itemsLocationMap.containsKey(itemName);
+        if(containsItem){
+            System.out.println( "\n\n" + itemName + " located at: "+ itemsLocationMap.get(itemName));
+        }else{
+            System.out.println("\n\n"+"Sorry, we could not find your item here");
+        }
+
+
+        } // itemLocation ends
+        
+    
+
+    private static void itemPrice(String itemName) {
+
+        boolean containsItem = priceMap.containsKey(itemName);
+        if(containsItem){
+            System.out.println( itemName + ":"  + "$"+ priceMap.get(itemName));
+        }else{
+            System.out.println("Sorry, we could not find your item here ");
+        }
+
+    }
+
+    private static void stockOfItem(String itemName){
+        System.out.println("User Selected count(stock) of item for :" + itemName);
+
+        boolean containsItem = stockOfItemMap.containsKey(itemName);
+        if(containsItem){
+            System.out.println( "\n\n"+ "the stock of this item is: " + itemName  + stockOfItemMap.get(itemName));
+        }else{
+            System.out.println("\n\n"+"Sorry, we could not find your item here");
+        }
+    }
+
+    private static void cashRegister(String itemName, Integer itemQuantity) {
+        System.out.println("User Selected  Cash Register for :" + itemName  +" this is the quantity:"+ itemQuantity);
+
+        Float itemPrice = priceMap.get(itemName);
+        System.out.println("User Selected  Cash Register for :" + itemName  +" Unit Price: " +"$"+ itemPrice);
+
+        Float TotalAmount= itemPrice * itemQuantity;
+
+        System.out.println("here is the total price: $"+ TotalAmount );
+
+    }
+
+
+}
+
